@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="/" method="post" class="board-form">
+        タイトル: <input type="text" name="diary_title" class="input" required><br>
+        内容: <input type="text" name="diary_body" class="input" required><br>
+        <br>
+        <button type="submit" class="submit">ボード作成</button>
+      </form>
+      <% diaries.forEach((diary) => { %>
+      <p><%= diary.diary_title %></p>
+      <p><%= diary.diary_body %></p>
+      <form action="/destroy/" method="POST">
+        <input type="hidden" name="id" value="<%= diary.id %>">
+        <input type="submit" value="削除">
+      </form>
+      <form action="/edit/<%= diary.id %>" method="post">
+          <input type="text" name="first_name" value="<%= diary.diary_title %>">
+          <input type="text" name="last_name" value="<%= diary.diary_body %>">
+          <input type="submit" value="編集">
+      </form>
+      <% }) %>
+  </body>
+</html>

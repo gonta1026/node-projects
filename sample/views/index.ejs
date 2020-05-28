@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sample</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>Sample</h1>
+  <p>Welcome to Sample</p>
+
+  <h2>Human Table</h2>
+  <div>
+    <p>
+      <span>ID</span>
+      <span>Name</span>
+      <span>Age</span>
+    </p>
+    <% humans.forEach((human) => { %>
+    <a href="/edit/<%= human.id %>">
+      <span><%= human.id %></span>
+      <span><%= human.name %></span>
+      <span><%= human.age %></span>
+      <% human.Pets.forEach((pet) => {%>
+      <span><%= pet.name %></span>
+      <% }); %>
+    </a>
+    <% }); %>
+  </div>
+
+  <h2>Create Human</h2>
+  <form action="/human/add" method="POST">
+    <input type="text" name="name" placeholder="name">
+    <input type="number" name="age" placeholder="age">
+    <input type="submit" value="Create">
+  </form>
+
+  <h2>Destroy Human</h2>
+  <form action="/human/destroy" method="POST">
+    <input type="number" name="id" placeholder="id">
+    <input type="submit" value="Destroy">
+  </form>
+</body>
+
+<h2>Create Pet</h2>
+<form action="/pet/add" method="POST">
+  <input type="text" name="name" placeholder="name">
+  <input type="text" name="kind" placeholder="kind">
+  <input type="number" name="HumanId" placeholder="Owner's ID">
+  <input type="submit" value="Create">
+</form>
+
+</html>

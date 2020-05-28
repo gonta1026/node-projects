@@ -1,0 +1,14 @@
+<% layout("layout") %>
+<p class="main-title">ログインページ</p>
+<form action="/login" method="post" class="board-form">
+  <span class="label">Eメール</span><input type="email" name="email" class="input" value=""><br>
+  <br>
+  <span class="label">パスワード</span><input type="password" name="password" class="input" value=""><br>
+  <br>
+  <button type="submit" class="submit">ログイン</button>
+</form>
+<input type="text">
+<% if (typeof noUser !== 'undefined') { %>
+<p class="error"><%= noUser %></p>
+<% } %>
+<a href="/" class="btn">トップへもどる</a>
